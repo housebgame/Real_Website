@@ -1043,13 +1043,168 @@
             .cursor-follower {
                 display: none;
             }
-            
+
             * {
                 cursor: auto !important;
             }
 
             .icon-store-link {
                 cursor: pointer !important;
+            }
+        }
+
+        /* Video Modal Styles */
+        .video-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10001;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+        }
+
+        .video-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .video-modal-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            cursor: none;
+        }
+
+        .video-modal-content {
+            position: relative;
+            width: 90%;
+            max-width: 1000px;
+            z-index: 10002;
+            opacity: 0;
+            transform: scale(0.95);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+
+        .video-modal.active .video-modal-content {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .video-close-btn {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #E85D44;
+            border: none;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: none;
+            transition: all 0.3s ease;
+            z-index: 10003;
+        }
+
+        .video-close-btn:hover {
+            background: #b73d2b;
+            transform: scale(1.1);
+        }
+
+        .video-close-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .video-info {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px 25px;
+            border-radius: 20px 20px 0 0;
+            margin-bottom: -5px;
+        }
+
+        .video-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #2C3E50;
+            margin-bottom: 8px;
+        }
+
+        .video-description {
+            font-size: 1rem;
+            color: #5D6D7E;
+            margin: 0;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 0 0 20px 20px;
+            background: #000;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 0 0 20px 20px;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .video-modal-content {
+                width: 95%;
+            }
+
+            .video-close-btn {
+                top: -45px;
+                width: 36px;
+                height: 36px;
+            }
+
+            .video-info {
+                padding: 15px 20px;
+            }
+
+            .video-title {
+                font-size: 1.3rem;
+            }
+
+            .video-description {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .video-close-btn {
+                top: 10px;
+                right: 10px;
+            }
+
+            .video-title {
+                font-size: 1.1rem;
+            }
+
+            .video-description {
+                font-size: 0.85rem;
             }
         }
     </style>
@@ -1228,6 +1383,26 @@
         </div>
     </section>
 
+    <!-- Video Modal / Theater Mode -->
+    <div class="video-modal" id="videoModal">
+        <div class="video-modal-overlay" id="videoModalOverlay"></div>
+        <div class="video-modal-content">
+            <button class="video-close-btn" id="videoCloseBtn" aria-label="Close video">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <div class="video-info">
+                <h3 class="video-title" id="videoTitle"></h3>
+                <p class="video-description" id="videoDescription"></p>
+            </div>
+            <div class="video-wrapper" id="videoWrapper">
+                <!-- YouTube iframe will be inserted here -->
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer>
         <div class="footer-text">© 2025 House Boat Game. All rights reserved.</div>
@@ -1246,15 +1421,17 @@
                 description: "Crosswords made simple. (Coming Soon)",
                 image: "images/letro.png",
                 bgColor: "#FF6B6B",
+                videoId: "QUQNHY94gTo", // Replace with your actual YouTube video ID
                 links: {
                     crazyGame: "https://www.crazygames.com/game/letro"
                 }
             },
             {
                 name: "Simple Words Pro",
-                description: "Relaxing word game that’s as beautiful as it is brainy.",
+                description: "Relaxing word game that's as beautiful as it is brainy.",
                 image: "images/simple-words-pro.png",
                 bgColor: "#4D96FF",
+                videoId: "QUQNHY94gTo", // Replace with your actual YouTube video ID
                 links: {
                     playStore: "https://play.google.com/store/apps/details?id=com.HBG.SimpleWords.Paid",
                     crazyGame: "https://www.crazygames.com/game/simple-words"
@@ -1265,6 +1442,7 @@
                 description: "Pure, authentic, and relaxing color game.",
                 image: "images/slidy.png",
                 bgColor: "#FFFFFF",
+                videoId: "QUQNHY94gTo", // Replace with your actual YouTube video ID
                 links: {
                     crazyGame: "https://www.crazygames.com/game/slidy"
                 }
@@ -1274,6 +1452,7 @@
                 description: "Clean and beautifully designed block puzzle game.",
                 image: "images/hexa-quest.png",
                 bgColor: "#6BCB77",
+                videoId: "QUQNHY94gTo", // Replace with your actual YouTube video ID
                 links: {
                     playStore: "https://play.google.com/store/apps/details?id=com.BlockPuzzleGame.HexaQuest1"
                 }
@@ -1283,6 +1462,7 @@
                 description: "Ultimate crossword puzzle game.",
                 image: "images/crossword-wonderer.png",
                 bgColor: "#A06CD5",
+                videoId: "QUQNHY94gTo", // Replace with your actual YouTube video ID
                 links: {
                     playStore: "https://play.google.com/store/apps/details?id=com.WordConnect.Crossword.Wonderer2"
                 }
@@ -1335,14 +1515,63 @@
             }, 1200);
         }
 
+        // Video Modal Functions
+        function openVideoModal(project) {
+            const modal = document.getElementById('videoModal');
+            const videoWrapper = document.getElementById('videoWrapper');
+            const videoTitle = document.getElementById('videoTitle');
+            const videoDescription = document.getElementById('videoDescription');
+
+            // Set title and description
+            videoTitle.textContent = project.name;
+            videoDescription.textContent = project.description;
+
+            // Create YouTube iframe with autoplay
+            if (project.videoId) {
+                const iframe = document.createElement('iframe');
+                // Build URL with proper parameters including origin
+                const origin = encodeURIComponent(window.location.origin);
+                iframe.src = `https://www.youtube.com/embed/${project.videoId}?autoplay=1&mute=1&rel=0&fs=1&origin=${origin}`;
+                iframe.title = 'YouTube video player';
+                iframe.type = 'text/html';
+                iframe.frameBorder = '0';
+                iframe.scrolling = 'no';
+                iframe.marginHeight = '0';
+                iframe.marginWidth = '0';
+                iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+                iframe.allowFullscreen = true;
+                iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+                videoWrapper.appendChild(iframe);
+            }
+
+            // Show modal with fade animation
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
+        }
+
+        function closeVideoModal() {
+            const modal = document.getElementById('videoModal');
+            const videoWrapper = document.getElementById('videoWrapper');
+
+            // Hide modal
+            modal.classList.remove('active');
+            document.body.style.overflow = ''; // Restore scrolling
+
+            // Remove iframe after animation completes
+            setTimeout(() => {
+                videoWrapper.innerHTML = '';
+            }, 400);
+        }
+
         // Function to generate icon collage
         function generateIconCollage() {
             const iconCollage = document.getElementById('iconCollage');
-            
+
             projects.forEach((project, index) => {
                 const iconItem = document.createElement('div');
                 iconItem.className = 'icon-item';
-                
+                iconItem.dataset.projectIndex = index; // Store index for video modal
+
                 let storeLinksHTML = '';
                 if (project.links.appStore) {
                     storeLinksHTML += `
@@ -1365,7 +1594,7 @@
                         </a>
                     `;
                 }
-                
+
                 iconItem.innerHTML = `
                     <div class="icon-content" style="--bg-color: ${project.bgColor || '#0a1220'};">
                         ${project.image ? `<img src="${project.image}" alt="${project.name}" class="icon-bg-blur">` : ''}
@@ -1379,7 +1608,15 @@
                         </div>
                     </div>
                 `;
-                
+
+                // Add click event to open video modal (but not on store links)
+                iconItem.addEventListener('click', (e) => {
+                    // Don't open modal if clicking on store links
+                    if (!e.target.closest('.icon-store-link')) {
+                        openVideoModal(project);
+                    }
+                });
+
                 iconCollage.appendChild(iconItem);
             });
         }
@@ -1462,10 +1699,30 @@
             setTimeout(() => {
                 document.querySelector('.loader').classList.add('hide');
             }, 1000);
-            
+
             generateIconCollage();
             createParticles();
             startAnimationSequence();
+
+            // Video modal event listeners
+            const videoCloseBtn = document.getElementById('videoCloseBtn');
+            const videoModalOverlay = document.getElementById('videoModalOverlay');
+
+            // Close modal on button click
+            videoCloseBtn.addEventListener('click', closeVideoModal);
+
+            // Close modal on overlay click
+            videoModalOverlay.addEventListener('click', closeVideoModal);
+
+            // Close modal on ESC key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    const modal = document.getElementById('videoModal');
+                    if (modal.classList.contains('active')) {
+                        closeVideoModal();
+                    }
+                }
+            });
         });
 
         // Intersection Observer for scroll animations
