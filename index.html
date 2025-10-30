@@ -6,6 +6,7 @@
     <title>House Boat Game - Digital Experiences</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/portfolio-section.css">
     <style>
         * {
             margin: 0;
@@ -706,7 +707,7 @@
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(4, 1fr);
             gap: 20px;
             margin-top: 40px;
             max-width: 800px;
@@ -1074,6 +1075,7 @@
                 <li><a href="#projects">Games</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
+                <li><a href="#other-projects">Tools</a></li>
             </ul>
         </div>
     </nav>
@@ -1082,12 +1084,91 @@
     <section class="projects" id="projects">
         <div class="section-header">
             <h2>Featured Projects</h2>
-            <p>Crafting immersive experiences that blur the line between reality and imagination.</p>
+            <p>Building digital experiences that inspire and engage.</p>
         </div>
         <div class="icon-collage" id="iconCollage">
             <!-- Icons will be dynamically inserted here -->
         </div>
     </section>
+
+    <!-- Other Projects (non-game) -->
+    <section class="other-projects" id="other-projects">
+        <div class="section-header">
+            <h2>Other Projects</h2>
+            <p>Non-game work: editor extensions, client websites and tools.</p>
+        </div>
+
+        <div class="carousel-wrap">
+            <button class="carousel-btn prev" aria-label="Previous projects">‹</button>
+
+            <div class="scroller" id="otherScroller" tabindex="0" role="list" aria-label="Other projects carousel">
+                <!-- Placeholder cards: replace images/text with your projects -->
+                <a class="project-card" role="listitem" href="https://github.com/housebgame/portfolio-extension" target="_blank" aria-label="Portfolio Extension — VS Code extension">
+                    <img class="card-image" src="images/letro.png" alt="Portfolio Extension screenshot" loading="lazy">
+                    <div class="card-body">
+                        <h3 class="card-title">Portfolio Extension</h3>
+                        <p class="card-desc">A VS Code extension to manage and showcase your projects directly from the editor.</p>
+                        <div class="card-meta">
+                            <span class="tag">Extension</span>
+                            <span class="muted">VS Code</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a class="project-card" role="listitem" href="https://clientsite.example.com" target="_blank" aria-label="E-commerce Platform — client project">
+                    <img class="card-image" src="images/hexa-quest.png" alt="E-commerce Platform screenshot" loading="lazy">
+                    <div class="card-body">
+                        <h3 class="card-title">E-commerce Platform</h3>
+                        <p class="card-desc">A scalable e-commerce solution built for a retail client, featuring custom integrations.</p>
+                        <div class="card-meta">
+                            <span class="tag">Client</span>
+                            <span class="muted">Web</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a class="project-card" role="listitem" href="#" aria-label="Editor Extension — code editor plugin">
+                    <img class="card-image" src="images/slidy.png" alt="Editor extension screenshot" loading="lazy">
+                    <div class="card-body">
+                        <h3 class="card-title">Editor Extension</h3>
+                        <p class="card-desc">A productivity extension for code editing — customizable, fast, and reliable.</p>
+                        <div class="card-meta">
+                            <span class="tag">Extension</span>
+                            <span class="muted">VS Code</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a class="project-card" role="listitem" href="#" aria-label="Client Website — portfolio site">
+                    <img class="card-image" src="images/Crazy-games.png" alt="Client website screenshot" loading="lazy">
+                    <div class="card-body">
+                        <h3 class="card-title">Client Website</h3>
+                        <p class="card-desc">Custom client website delivering a clean brand presence and conversions.</p>
+                        <div class="card-meta">
+                            <span class="tag">Client</span>
+                            <span class="muted">Web</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a class="project-card" role="listitem" href="#" aria-label="Tooling — internal productivity tool">
+                    <img class="card-image" src="images/simple-words-pro.png" alt="Tool screenshot" loading="lazy">
+                    <div class="card-body">
+                        <h3 class="card-title">Internal Tool</h3>
+                        <p class="card-desc">Utilities and automation to speed up development workflows.</p>
+                        <div class="card-meta">
+                            <span class="tag">Tooling</span>
+                            <span class="muted">Internal</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <button class="carousel-btn next" aria-label="Next projects">›</button>
+        </div>
+    </section>
+
+    <script src="scripts/portfolio-section.js"></script>
 
     <!-- About Section -->
     <section class="about" id="about">
@@ -1143,15 +1224,6 @@
                     <h3 class="service-title">Game Collaboration</h3>
                     <p class="service-desc">Let's work together to bring your game ideas to life</p>
                 </div>
-                 <div class="service-box">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zM11 13H9v2H7v-2H5v-2h2V9h2v2h2v2zm3.5 1c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm3-3c-.83 0-1.5-.67-1.5-1.5S16.67 9 17.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>
-                        </svg>
-                    </div>
-                    <h3 class="service-title">Quick Prototype</h3>
-                    <p class="service-desc">I am open to new experiences</p>
-                </div>
             </div>
         </div>
     </section>
@@ -1160,9 +1232,9 @@
     <footer>
         <div class="footer-text">© 2025 House Boat Game. All rights reserved.</div>
         <div class="social-links">
-            <a href="https://x.com/Lakshay_mothwal">Twitter</a>
-            <a href="https://www.instagram.com/Lakshay_mothwal/">Instagram</a>
-            <a href="https://in.linkedin.com/in/lakshay-mothwal-b6210b198">LinkedIn</a>
+            <a href="https://x.com/Lakshay_mothwal" target="_blank" rel="noopener">Twitter</a>
+            <a href="https://www.instagram.com/Lakshay_mothwal/" target="_blank" rel="noopener">Instagram</a>
+            <a href="https://in.linkedin.com/in/lakshay-mothwal-b6210b198" target="_blank" rel="noopener">LinkedIn</a>
         </div>
     </footer>
 
