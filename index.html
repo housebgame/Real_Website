@@ -1150,12 +1150,19 @@
 
         .video-wrapper {
             position: relative;
-            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            padding-bottom: 56.25%; /* 16:9 aspect ratio for horizontal videos */
             height: 0;
             overflow: hidden;
             border-radius: 0 0 20px 20px;
             background: #000;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Vertical video (Shorts) styling for mobile */
+        .video-wrapper.vertical-video {
+            padding-bottom: 177.78%; /* 9:16 aspect ratio for vertical videos/Shorts */
+            max-width: 400px;
+            margin: 0 auto;
         }
 
         .video-wrapper iframe {
@@ -1201,6 +1208,12 @@
 
             .video-wrapper iframe {
                 border-radius: 0 0 15px 15px;
+            }
+
+            /* Vertical video adjustments on mobile */
+            .video-wrapper.vertical-video {
+                max-width: 100%;
+                width: 100%;
             }
         }
 
@@ -1480,7 +1493,8 @@
                 description: "Crosswords made simple. (Coming Soon)",
                 image: "images/letro.png",
                 bgColor: "#FF6B6B",
-                videoId: "QUQNHY94gTo", // Replace with your actual YouTube video ID
+                videoId: "QUQNHY94gTo", // Desktop/horizontal video ID
+                videoIdMobile: "uJwDq7laUiY", // Mobile/Shorts video ID (optional - vertical format)
                 links: {
                     crazyGame: "https://www.crazygames.com/game/letro"
                 }
@@ -1490,7 +1504,8 @@
                 description: "Relaxing word game that's as beautiful as it is brainy.",
                 image: "images/simple-words-pro.png",
                 bgColor: "#4D96FF",
-                videoId: "QUQNHY94gTo", // Replace with your actual YouTube video ID
+                videoId: "QUQNHY94gTo", // Desktop/horizontal video ID
+                videoIdMobile: "uJwDq7laUiY", // Mobile/Shorts video ID (optional)
                 links: {
                     playStore: "https://play.google.com/store/apps/details?id=com.HBG.SimpleWords.Paid",
                     crazyGame: "https://www.crazygames.com/game/simple-words"
@@ -1501,7 +1516,8 @@
                 description: "Pure, authentic, and relaxing color game.",
                 image: "images/slidy.png",
                 bgColor: "#FFFFFF",
-                videoId: "QUQNHY94gTo", // Replace with your actual YouTube video ID
+                videoId: "QUQNHY94gTo", // Desktop/horizontal video ID
+                videoIdMobile: "uJwDq7laUiY", // Mobile/Shorts video ID (optional)
                 links: {
                     crazyGame: "https://www.crazygames.com/game/slidy"
                 }
@@ -1511,7 +1527,8 @@
                 description: "Clean and beautifully designed block puzzle game.",
                 image: "images/hexa-quest.png",
                 bgColor: "#6BCB77",
-                videoId: "QUQNHY94gTo", // Replace with your actual YouTube video ID
+                videoId: "QUQNHY94gTo", // Desktop/horizontal video ID
+                videoIdMobile: "uJwDq7laUiY", // Mobile/Shorts video ID (optional)
                 links: {
                     playStore: "https://play.google.com/store/apps/details?id=com.BlockPuzzleGame.HexaQuest1"
                 }
@@ -1521,7 +1538,8 @@
                 description: "Ultimate crossword puzzle game.",
                 image: "images/crossword-wonderer.png",
                 bgColor: "#A06CD5",
-                videoId: "QUQNHY94gTo", // Replace with your actual YouTube video ID
+                videoId: "QUQNHY94gTo", // Desktop/horizontal video ID
+                videoIdMobile: "uJwDq7laUiY", // Mobile/Shorts video ID (optional)
                 links: {
                     playStore: "https://play.google.com/store/apps/details?id=com.WordConnect.Crossword.Wonderer2"
                 }
@@ -1574,6 +1592,12 @@
             }, 1200);
         }
 
+        // Detect if device is mobile
+        function isMobileDevice() {
+            return window.innerWidth <= 768 ||
+                   /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+
         // Video Modal Functions
         function openVideoModal(project) {
             const modal = document.getElementById('videoModal');
@@ -1585,12 +1609,23 @@
             videoTitle.textContent = project.name;
             videoDescription.textContent = project.description;
 
+            // Determine which video to use (mobile Shorts or desktop horizontal)
+            const isMobile = isMobileDevice();
+            const videoId = (isMobile && project.videoIdMobile) ? project.videoIdMobile : project.videoId;
+
+            // Add class for vertical video styling if using mobile Shorts
+            if (isMobile && project.videoIdMobile) {
+                videoWrapper.classList.add('vertical-video');
+            } else {
+                videoWrapper.classList.remove('vertical-video');
+            }
+
             // Create YouTube iframe with autoplay
-            if (project.videoId) {
+            if (videoId) {
                 const iframe = document.createElement('iframe');
                 // Build URL with proper parameters including origin
                 const origin = encodeURIComponent(window.location.origin);
-                iframe.src = `https://www.youtube.com/embed/${project.videoId}?autoplay=1&mute=1&rel=0&fs=1&origin=${origin}`;
+                iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&rel=0&fs=1&origin=${origin}`;
                 iframe.title = 'YouTube video player';
                 iframe.type = 'text/html';
                 iframe.frameBorder = '0';
