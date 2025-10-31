@@ -370,44 +370,8 @@
     }
 
     .discover-thumbnail {
-        flex: 0 0 60px;
-        height: 42px;
-    }
-
-    .discover-thumbnails {
-        padding: 0 34px;
-    }
-
-    .discover-scroll-btn {
-        width: 28px;
-        height: 28px;
-    }
-
-    .discover-scroll-btn svg {
-        width: 11px;
-        height: 11px;
-    }
-
-    .discover-pause-play {
-        width: 38px;
-        height: 38px;
-        bottom: -48px;
-    }
-
-    .discover-pause-play svg {
-        width: 15px;
-        height: 15px;
-    }
-}
-
-@media (max-width: 480px) {
-    .discover-section {
-        padding: 50px 15px;
-    }
-
-    .discover-thumbnail {
-        flex: 0 0 55px;
-        height: 38px;
+        flex: 0 0 50px;
+        height: 35px;
     }
 
     .discover-thumbnails {
@@ -425,14 +389,50 @@
     }
 
     .discover-pause-play {
-        width: 36px;
-        height: 36px;
+        width: 35px;
+        height: 35px;
         bottom: -45px;
     }
 
     .discover-pause-play svg {
         width: 14px;
         height: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .discover-section {
+        padding: 50px 15px;
+    }
+
+    .discover-thumbnail {
+        flex: 0 0 45px;
+        height: 32px;
+    }
+
+    .discover-thumbnails {
+        padding: 0 30px;
+    }
+
+    .discover-scroll-btn {
+        width: 24px;
+        height: 24px;
+    }
+
+    .discover-scroll-btn svg {
+        width: 9px;
+        height: 9px;
+    }
+
+    .discover-pause-play {
+        width: 33px;
+        height: 33px;
+        bottom: -42px;
+    }
+
+    .discover-pause-play svg {
+        width: 13px;
+        height: 13px;
     }
 }
 
