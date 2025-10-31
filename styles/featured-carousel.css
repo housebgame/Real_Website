@@ -291,16 +291,29 @@
 
 @media (max-width: 768px) {
     .featured-section {
-        padding: 60px 25px 80px;
+        padding: 40px 20px 60px;
     }
 
     .featured-item {
-        padding: 25px;
-        gap: 20px;
+        padding: 20px;
+        gap: 15px;
     }
 
     .featured-content {
-        padding: 10px;
+        padding: 5px;
+    }
+
+    .featured-content h3 {
+        font-size: 1.5rem;
+    }
+
+    .featured-content p {
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+
+    .featured-image-container {
+        aspect-ratio: 4 / 3;
     }
 
     .featured-nav {
@@ -318,11 +331,14 @@
 
     .featured-links {
         flex-direction: column;
+        gap: 10px;
     }
 
     .featured-btn {
         width: 100%;
         justify-content: center;
+        padding: 12px 20px;
+        font-size: 0.9rem;
     }
 }
 
