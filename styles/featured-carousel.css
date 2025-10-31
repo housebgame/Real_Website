@@ -10,6 +10,12 @@
     overflow: hidden;
 }
 
+@media (max-width: 768px) {
+    .featured-section {
+        padding-top: 100px;
+    }
+}
+
 .featured-header {
     text-align: center;
     margin-bottom: 50px;
@@ -290,10 +296,6 @@
 }
 
 @media (max-width: 768px) {
-    .featured-section {
-        padding: 40px 20px 60px;
-    }
-
     .featured-item {
         padding: 20px;
         gap: 15px;
