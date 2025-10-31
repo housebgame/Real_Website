@@ -358,55 +358,33 @@
 
 @media (max-width: 768px) {
     .discover-section {
-        padding: 80px 25px;
+        padding: 60px 20px;
     }
 
     .discover-category {
         margin-bottom: 60px;
+        gap: 40px;
     }
 
     .discover-content {
         padding: 10px;
     }
 
-    .discover-thumbnail {
-        flex: 0 0 100px;
-        height: 70px;
+    .discover-content h2 {
+        font-size: 2rem;
     }
 
-    .discover-thumbnails {
-        padding: 0 40px;
-    }
-
-    .discover-scroll-btn {
-        width: 35px;
-        height: 35px;
-    }
-
-    .discover-pause-play {
-        width: 45px;
-        height: 45px;
-        bottom: -55px;
-    }
-
-    .discover-pause-play svg {
-        width: 18px;
-        height: 18px;
-    }
-}
-
-@media (max-width: 480px) {
-    .discover-section {
-        padding: 60px 20px;
+    .discover-content p {
+        font-size: 1rem;
     }
 
     .discover-thumbnail {
         flex: 0 0 80px;
-        height: 60px;
+        height: 55px;
     }
 
     .discover-thumbnails {
-        padding: 0 35px;
+        padding: 0 38px;
     }
 
     .discover-scroll-btn {
@@ -420,14 +398,69 @@
     }
 
     .discover-pause-play {
-        width: 48px;
-        height: 48px;
-        bottom: -60px;
+        width: 40px;
+        height: 40px;
+        bottom: -50px;
     }
 
     .discover-pause-play svg {
-        width: 20px;
-        height: 20px;
+        width: 16px;
+        height: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .discover-section {
+        padding: 40px 15px;
+    }
+
+    .discover-category {
+        gap: 30px;
+        margin-bottom: 50px;
+    }
+
+    .discover-content h2 {
+        font-size: 1.75rem;
+    }
+
+    .discover-content p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    .discover-thumbnail {
+        flex: 0 0 70px;
+        height: 50px;
+    }
+
+    .discover-thumbnails {
+        padding: 0 34px;
+    }
+
+    .discover-scroll-btn {
+        width: 30px;
+        height: 30px;
+    }
+
+    .discover-scroll-btn svg {
+        width: 12px;
+        height: 12px;
+    }
+
+    .discover-pause-play {
+        width: 40px;
+        height: 40px;
+        bottom: -50px;
+    }
+
+    .discover-pause-play svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    .discover-btn {
+        padding: 12px 20px;
+        font-size: 0.9rem;
     }
 }
 
