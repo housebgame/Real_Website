@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Portfolio Preview — Warm Variant</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Inter:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles/portfolio-preview.css">
+</head>
+<body class="warm">
+    <header class="preview-header">
+        <a class="back" href="../index.html">← Back to site</a>
+        <h1>Portfolio — Warm Variant</h1>
+    </header>
+
+    <main class="preview-main" role="main">
+        <section class="project-carousel" aria-labelledby="proj-heading">
+            <div class="section-header">
+                <h2 id="proj-heading">Selected Projects</h2>
+                <p>Horizontal scroller mockup that matches the game's warm, friendly theme. Choose a variant to apply sitewide.</p>
+            </div>
+
+            <div class="carousel-wrap">
+                <button class="carousel-btn prev" aria-label="Previous projects">‹</button>
+
+                <div class="scroller" id="scroller" tabindex="0" role="list" aria-label="Projects carousel">
+                    <a class="project-card" role="listitem" href="#" aria-label="Letro — Crosswords made simple">
+                        <img class="card-image" src="../images/letro.png" alt="Letro — screenshot" loading="lazy">
+                        <div class="card-body">
+                            <h3 class="card-title">Letro</h3>
+                            <p class="card-desc">Crosswords made simple. A light, elegant wordplay experience.</p>
+                            <div class="card-meta">
+                                <span class="tag">Game</span>
+                                <span class="muted">CrazyGames</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a class="project-card" role="listitem" href="#" aria-label="Simple Words Pro — Relaxing word game">
+                        <img class="card-image" src="../images/simple-words-pro.png" alt="Simple Words Pro — screenshot" loading="lazy">
+                        <div class="card-body">
+                            <h3 class="card-title">Simple Words Pro</h3>
+                            <p class="card-desc">Relaxing word game that’s as beautiful as it is brainy.</p>
+                            <div class="card-meta">
+                                <span class="tag">Mobile</span>
+                                <span class="muted">Google Play</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a class="project-card" role="listitem" href="#" aria-label="Hexa Quest — Block puzzle">
+                        <img class="card-image" src="../images/hexa-quest.png" alt="Hexa Quest — screenshot" loading="lazy">
+                        <div class="card-body">
+                            <h3 class="card-title">Hexa Quest</h3>
+                            <p class="card-desc">Clean, beautifully designed block puzzle game.</p>
+                            <div class="card-meta">
+                                <span class="tag">Puzzle</span>
+                                <span class="muted">Play Store</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a class="project-card" role="listitem" href="#" aria-label="Crossword — Wonderer — Ultimate crossword">
+                        <img class="card-image" src="../images/crossword-wonderer.png" alt="Crossword Wonderer — screenshot" loading="lazy">
+                        <div class="card-body">
+                            <h3 class="card-title">Crossword — Wonderer</h3>
+                            <p class="card-desc">Ultimate crossword puzzle game with polished UX.</p>
+                            <div class="card-meta">
+                                <span class="tag">Word</span>
+                                <span class="muted">Google Play</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <button class="carousel-btn next" aria-label="Next projects">›</button>
+            </div>
+        </section>
+    </main>
+
+    <footer class="preview-footer">
+        <small>Warm variant: uses the site's coral accent and pale background.</small>
+    </footer>
+
+    <script>
+        // Tiny carousel controls
+        (function(){
+            const scroller = document.getElementById('scroller');
+            const prev = document.querySelector('.carousel-btn.prev');
+            const next = document.querySelector('.carousel-btn.next');
+            function scrollBy(amount){ scroller.scrollBy({ left: amount, behavior: 'smooth' }); }
+            prev.addEventListener('click', ()=> scrollBy(-Math.round(scroller.clientWidth * 0.8)));
+            next.addEventListener('click', ()=> scrollBy(Math.round(scroller.clientWidth * 0.8)));
+
+            // keyboard navigation when scroller is focused
+            scroller.addEventListener('keydown', (e)=>{
+                if(e.key === 'ArrowRight') { e.preventDefault(); scrollBy(320); }
+                if(e.key === 'ArrowLeft') { e.preventDefault(); scrollBy(-320); }
+            });
+        })();
+    </script>
+</body>
+</html>

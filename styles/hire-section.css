@@ -1,0 +1,273 @@
+/* ================================
+   HIRE/COLLABORATE SECTION
+   2-Column Card Layout
+   Your style - modern, clean design
+   ================================ */
+
+.hire-section {
+    padding: 100px 60px;
+    background: #FDF6E3;
+}
+
+.hire-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+/* Individual Cards */
+.hire-card {
+    background: #FFFFFF;
+    border-radius: 20px;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1), 0 3px 10px rgba(0, 0, 0, 0.05);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.hire-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, var(--card-color-start), var(--card-color-end));
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.hire-card:hover::before {
+    opacity: 1;
+}
+
+.hire-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15), 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Card Specific Colors */
+.hire-card.collaborate {
+    --card-color-start: #E85D44;
+    --card-color-end: #d44a31;
+}
+
+.hire-card.support {
+    --card-color-start: #4D96FF;
+    --card-color-end: #3a7de0;
+}
+
+/* Icon Container */
+.hire-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+    background: linear-gradient(135deg, var(--card-color-start), var(--card-color-end));
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hire-card:hover .hire-icon {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+.hire-icon svg {
+    width: 40px;
+    height: 40px;
+    fill: #FFFFFF;
+}
+
+/* Content */
+.hire-card h3 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #2C3E50;
+    margin-bottom: 15px;
+    letter-spacing: -0.01em;
+}
+
+.hire-card p {
+    font-size: 1.05rem;
+    color: #5D6D7E;
+    line-height: 1.7;
+    margin-bottom: 30px;
+    max-width: 400px;
+}
+
+/* Buttons */
+.hire-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 32px;
+    background: linear-gradient(135deg, var(--card-color-start), var(--card-color-end));
+    color: #FFFFFF;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.hire-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.hire-btn:hover::before {
+    left: 100%;
+}
+
+.hire-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.hire-btn svg {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+    transition: transform 0.3s ease;
+}
+
+.hire-btn:hover svg {
+    transform: translateX(4px);
+}
+
+/* Features List (Optional) */
+.hire-features {
+    width: 100%;
+    text-align: left;
+    margin: 20px 0;
+    padding: 20px 0;
+    border-top: 1px solid rgba(44, 62, 80, 0.1);
+}
+
+.hire-feature-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+    color: #5D6D7E;
+}
+
+.hire-feature-item:last-child {
+    margin-bottom: 0;
+}
+
+.hire-feature-icon {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--card-color-start), var(--card-color-end));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.hire-feature-icon svg {
+    width: 12px;
+    height: 12px;
+    fill: #FFFFFF;
+}
+
+/* Decorative Elements */
+.hire-card::after {
+    content: '';
+    position: absolute;
+    bottom: -50px;
+    right: -50px;
+    width: 150px;
+    height: 150px;
+    background: linear-gradient(135deg, var(--card-color-start), var(--card-color-end));
+    border-radius: 50%;
+    opacity: 0.05;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hire-card:hover::after {
+    bottom: -30px;
+    right: -30px;
+    opacity: 0.08;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .hire-container {
+        gap: 30px;
+    }
+
+    .hire-card {
+        padding: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hire-section {
+        padding: 80px 25px;
+    }
+
+    .hire-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .hire-card {
+        padding: 40px 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hire-section {
+        padding: 60px 20px;
+    }
+
+    .hire-card {
+        padding: 35px 25px;
+    }
+
+    .hire-icon {
+        width: 70px;
+        height: 70px;
+    }
+
+    .hire-icon svg {
+        width: 35px;
+        height: 35px;
+    }
+
+    .hire-card h3 {
+        font-size: 1.75rem;
+    }
+
+    .hire-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
