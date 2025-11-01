@@ -46,6 +46,7 @@ const projectsData = {
             videoIdMobile: 'uJwDq7laUiY',
             links: {
                 crazyGame: 'https://www.crazygames.com/game/slidy',
+                android: 'https://play.google.com/store/apps/details?id=com.hbg.slidy',
                 playPage: 'pages/games/slidy.html'
             }
         }
