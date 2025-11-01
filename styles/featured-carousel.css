@@ -199,16 +199,9 @@
 }
 
 .featured-btn {
-    min-width: 160px;
-}
-
-.featured-btn.secondary {
-    min-width: 160px;
-}
-
-.featured-btn {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 10px;
     padding: 14px 28px;
     background: #E85D44;
@@ -221,6 +214,13 @@
     cursor: none;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 0 4px 15px rgba(232, 93, 68, 0.3);
+    min-width: 160px;
+    flex: 0 0 auto;
+}
+
+.featured-btn.secondary {
+    min-width: 160px;
+    flex: 0 0 auto;
 }
 
 .featured-btn:hover {
@@ -359,15 +359,19 @@
         flex-direction: row;
         flex-wrap: wrap;
         gap: 10px;
+        justify-content: center;
     }
 
     .featured-btn {
         padding: 12px 20px;
         font-size: 0.9rem;
+        min-width: 150px;
+        flex: 0 0 auto;
     }
 
     .featured-btn.secondary {
-        flex: 1 1 calc(50% - 5px);
+        min-width: 150px;
+        flex: 0 0 auto;
     }
 }
 
