@@ -3,7 +3,12 @@
     "allow": [
       "WebFetch(domain:housebgame.github.io)",
       "WebFetch(domain:github.com)",
-      "Bash(python:*)"
+      "Bash(python:*)",
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nMobile responsive fixes and UI improvements\n\n- Reduced mobile top spacing for featured carousel (60px)\n- Fixed navigation: desktop shows nav links, mobile shows hamburger menu\n- Reduced hamburger menu width to 70% (max 280px)\n- Updated button logic: Play Now loads CrazyGames, Android/iOS buttons added\n- Android/iOS buttons share same line on both desktop and mobile\n- Reduced discover section thumbnail sizes for mobile (50px x 35px at 768px, 45px x 32px at 480px)\n- Moved featured badge inline next to game title\n- Fixed carousel indicators layout\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git push:*)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nFix Play Now button width and mobile navigation overlap\n\n- Play Now button now maintains inline size (not full width)\n- Fixed mobile navigation overlapping featured section (increased top padding to 100px)\n- Android/iOS buttons still share same line with flexible width\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git commit:*)"
     ],
     "deny": [],
     "ask": []
