@@ -919,6 +919,12 @@ function populateSocialsSection() {
                 nav.style.boxShadow = 'none';
             }
         });
+
+        // Debug version display
+        const debugVersion = document.createElement('div');
+        debugVersion.textContent = 'Debug v1.4782';
+        debugVersion.style.cssText = 'position: fixed; bottom: 10px; right: 10px; background: rgba(0,0,0,0.7); color: #fff; padding: 5px 10px; border-radius: 5px; font-size: 12px; z-index: 9999;';
+        document.body.appendChild(debugVersion);
     </script>
 </body>
 </html>
