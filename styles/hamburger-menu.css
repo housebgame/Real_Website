@@ -66,8 +66,8 @@
     position: fixed;
     top: 0;
     right: -100%;
-    width: 80%;
-    max-width: 350px;
+    width: 70%;
+    max-width: 280px;
     height: 100%;
     background: #FDF6E3;
     box-shadow: -5px 0 20px rgba(0, 0, 0, 0.15);
