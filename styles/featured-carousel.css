@@ -161,15 +161,18 @@
 
 .featured-tag {
     display: inline-block;
-    padding: 8px 16px;
+    padding: 6px 14px;
     background: linear-gradient(135deg, #E85D44, #d44a31);
     color: #FFFFFF;
     border-radius: 20px;
-    font-size: 0.85rem;
+    font-size: 0.75rem;
     font-weight: 600;
     letter-spacing: 0.05em;
-    margin-bottom: 20px;
+    margin-left: 12px;
     text-transform: uppercase;
+    vertical-align: middle;
+    position: relative;
+    top: -2px;
 }
 
 .featured-content h3 {
@@ -178,6 +181,10 @@
     color: #2C3E50;
     margin-bottom: 15px;
     letter-spacing: -0.01em;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
 }
 
 .featured-content p {
@@ -313,6 +320,12 @@
 
     .featured-content h3 {
         font-size: 1.5rem;
+    }
+
+    .featured-tag {
+        font-size: 0.65rem;
+        padding: 5px 12px;
+        margin-left: 8px;
     }
 
     .featured-content p {
