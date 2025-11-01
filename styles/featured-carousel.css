@@ -195,11 +195,15 @@
     display: flex;
     gap: 15px;
     flex-wrap: wrap;
+    justify-content: center;
+}
+
+.featured-btn {
+    min-width: 160px;
 }
 
 .featured-btn.secondary {
-    flex: 1;
-    min-width: 140px;
+    min-width: 160px;
 }
 
 .featured-btn {

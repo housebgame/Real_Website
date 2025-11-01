@@ -901,14 +901,34 @@ function populateSocialsSection() {
         });
 
         // ============= SMOOTH SCROLL FOR NAV LINKS =============
+        const scrollToSection = (targetId) => {
+            const targetSection = document.querySelector(targetId);
+            if (targetSection) {
+                const headerHeight = document.querySelector('nav').offsetHeight;
+                const targetPosition = targetSection.offsetTop - headerHeight - 20; // 20px extra spacing
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        };
+
+        // Desktop nav links
         document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetSection = document.querySelector(targetId);
-                if (targetSection) {
-                    targetSection.scrollIntoView({ behavior: 'smooth' });
-                }
+                scrollToSection(this.getAttribute('href'));
+            });
+        });
+
+        // Mobile menu links
+        document.querySelectorAll('.mobile-menu-links a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                scrollToSection(this.getAttribute('href'));
+                // Close mobile menu
+                document.querySelector('.mobile-menu').classList.remove('active');
+                document.querySelector('.mobile-menu-overlay').classList.remove('active');
             });
         });
 
@@ -926,7 +946,7 @@ function populateSocialsSection() {
 
         // Debug version display
         const debugVersion = document.createElement('div');
-        debugVersion.textContent = 'Debug v3.7241';
+        debugVersion.textContent = 'Debug v4.8923';
         debugVersion.style.cssText = 'position: fixed; bottom: 10px; right: 10px; background: rgba(0,0,0,0.7); color: #fff; padding: 5px 10px; border-radius: 5px; font-size: 12px; z-index: 9999;';
         document.body.appendChild(debugVersion);
     </script>
