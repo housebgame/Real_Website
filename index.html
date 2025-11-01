@@ -779,8 +779,9 @@
                         <h3>${project.title} <span class="featured-tag">${project.tag}</span></h3>
                         <p>${project.description}</p>
                         <div class="featured-links">
-                            ${project.links.playPage ? `<a href="${project.links.playPage}" class="featured-btn">Play Now</a>` : ''}
-                            ${project.links.crazyGame ? `<a href="${project.links.crazyGame}" target="_blank" class="featured-btn secondary">CrazyGames</a>` : ''}
+                            ${project.links.crazyGame ? `<a href="${project.links.crazyGame}" target="_blank" class="featured-btn">Play Now</a>` : ''}
+                            ${project.links.android ? `<a href="${project.links.android}" target="_blank" class="featured-btn secondary">Android</a>` : ''}
+                            ${project.links.ios ? `<a href="${project.links.ios}" target="_blank" class="featured-btn secondary">iOS</a>` : ''}
                         </div>
                     </div>
                 `;
