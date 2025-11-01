@@ -12,7 +12,8 @@
 
 @media (max-width: 768px) {
     .featured-section {
-        padding-top: 140px;
+        padding-top: 180px;
+        padding-bottom: 40px;
     }
 }
 
