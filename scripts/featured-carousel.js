@@ -59,6 +59,9 @@ class FeaturedCarousel {
         // Touch/Swipe support
         this.setupTouchSupport();
 
+        // Set up video play/pause detection
+        this.setupVideoDetection();
+
         // Start auto-play
         this.startAutoPlay();
 
@@ -161,6 +164,31 @@ class FeaturedCarousel {
                 this.prev();
             }
         }
+    }
+
+    setupVideoDetection() {
+        // Detect when user interacts with YouTube iframes
+        this.container.addEventListener('click', (e) => {
+            const iframe = e.target.closest('iframe');
+            if (iframe && iframe.src.includes('youtube.com')) {
+                console.log('🎬 User clicked on video - pausing carousel');
+                this.pauseAutoPlay();
+                this.isAutoPlaying = false;
+            }
+        });
+
+        // Listen for iframe interaction (YouTube API would be more robust but adds dependency)
+        // Pause carousel when hovering over video
+        this.items.forEach(item => {
+            const iframe = item.querySelector('iframe');
+            if (iframe) {
+                iframe.addEventListener('mouseenter', () => {
+                    console.log('🎬 Video hovered - pausing carousel');
+                    this.pauseAutoPlay();
+                    this.isAutoPlaying = false;
+                });
+            }
+        });
     }
 
     destroy() {
