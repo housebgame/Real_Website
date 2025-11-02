@@ -75,7 +75,7 @@ const projectsData = {
             description: 'Relaxing word game that\'s beautiful and brainy.',
             image: 'images/simple-words-pro.png',
             bgColor: '#4D96FF',
-            videoId: 'QUQNHY94gTo',
+            videoId: '9rH5eJCjhtg',
             videoIdMobile: 'uJwDq7laUiY',
             links: {
                 playStore: 'https://play.google.com/store/apps/details?id=com.HBG.SimpleWords.Paid',
