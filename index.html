@@ -905,7 +905,7 @@ function populateSocialsSection() {
             const targetSection = document.querySelector(targetId);
             if (targetSection) {
                 const headerHeight = document.querySelector('nav').offsetHeight;
-                const targetPosition = targetSection.offsetTop - headerHeight; // 20px extra spacing
+                const targetPosition = targetSection.offsetTop - headerHeight + 20; // 20px extra spacing
                 window.scrollTo({
                     top: targetPosition,
                     behavior: 'smooth'
