@@ -22,7 +22,7 @@ const projectsData = {
         },
         {
             id: 'simple-words-pro',
-            title: 'Simple Words Pro',
+            title: 'Simple Words',
             category: 'game',
             tag: 'Popular',
             description: 'Relaxing word game that\'s as beautiful as it is brainy. Connect letters to form words and clear the board.',
