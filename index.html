@@ -772,19 +772,38 @@
                 // Create featured item
                 const item = document.createElement('div');
                 item.className = 'featured-item';
+
+                // Determine if mobile or desktop video should be used
+                const isMobile = window.innerWidth <= 768;
+                const videoId = isMobile ? (project.videoIdMobile || project.videoId) : project.videoId;
+
+                // Determine Android link (support both 'android' and 'playStore')
+                const androidLink = project.links.android || project.links.playStore;
+
                 item.innerHTML = `
                     <div class="featured-image-container">
-                        <img src="${project.image}" alt="${project.title}" class="featured-image">
-                        <div class="featured-play-overlay">
-                            <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-                        </div>
+                        ${videoId ? `
+                            <iframe
+                                src="https://www.youtube.com/embed/${videoId}?autoplay=0&mute=1&loop=1&playlist=${videoId}&controls=1&modestbranding=1&rel=0"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen
+                                class="featured-image"
+                                style="width: 100%; height: 100%; object-fit: cover;">
+                            </iframe>
+                        ` : `
+                            <img src="${project.image}" alt="${project.title}" class="featured-image">
+                            <div class="featured-play-overlay">
+                                <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                            </div>
+                        `}
                     </div>
                     <div class="featured-content">
                         <h3>${project.title} <span class="featured-tag">${project.tag}</span></h3>
                         <p>${project.description}</p>
                         <div class="featured-links">
                             ${project.links.crazyGame ? `<a href="${project.links.crazyGame}" target="_blank" class="featured-btn">Play Now</a>` : ''}
-                            ${project.links.android ? `<a href="${project.links.android}" target="_blank" class="featured-btn secondary">Android</a>` : ''}
+                            ${androidLink ? `<a href="${androidLink}" target="_blank" class="featured-btn secondary">Android</a>` : ''}
                             ${project.links.ios ? `<a href="${project.links.ios}" target="_blank" class="featured-btn secondary">iOS</a>` : ''}
                         </div>
                     </div>
@@ -946,7 +965,7 @@ function populateSocialsSection() {
 
         // Debug version display
         const debugVersion = document.createElement('div');
-        debugVersion.textContent = 'Debug v5.3147';
+        debugVersion.textContent = 'Debug v6.4521';
         debugVersion.style.cssText = 'position: fixed; bottom: 10px; right: 10px; background: rgba(0,0,0,0.7); color: #fff; padding: 5px 10px; border-radius: 5px; font-size: 12px; z-index: 9999;';
         document.body.appendChild(debugVersion);
     </script>
