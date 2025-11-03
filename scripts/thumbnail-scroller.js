@@ -90,8 +90,55 @@ class ThumbnailScroller {
             thumb.classList.toggle('active', index === this.currentIndex);
         });
 
+        // Update main image container link
+        this.updateMainImageLink();
+
         // Update progress bar on active thumbnail
         this.startProgressAnimation();
+    }
+
+    updateMainImageLink() {
+        // Get the main image container
+        const mainImageContainer = this.mainImage.closest('.discover-main-image-container');
+        if (!mainImageContainer) return;
+
+        // Determine category type based on which discover category this belongs to
+        const categoryElement = this.container;
+        const isGamesCategory = categoryElement.classList.contains('games');
+        const isToolsCategory = categoryElement.classList.contains('tools');
+
+        // Get the correct data based on category
+        let currentData = null;
+        if (isGamesCategory && projectsData.games[this.currentIndex]) {
+            currentData = projectsData.games[this.currentIndex];
+        } else if (isToolsCategory && projectsData.toolsAndAssets[this.currentIndex]) {
+            currentData = projectsData.toolsAndAssets[this.currentIndex];
+        }
+
+        if (!currentData) return;
+
+        // Remove old click handler by cloning and replacing the element
+        const newContainer = mainImageContainer.cloneNode(true);
+        mainImageContainer.parentNode.replaceChild(newContainer, mainImageContainer);
+
+        // Update reference
+        this.mainImage = newContainer.querySelector('.discover-main-image');
+
+        // Add new click handler with correct link
+        newContainer.addEventListener('click', () => {
+            let link = null;
+            if (isGamesCategory) {
+                link = currentData.links.playPage || currentData.links.crazyGame || currentData.links.playStore;
+                if (link) {
+                    window.location.href = link;
+                }
+            } else if (isToolsCategory) {
+                link = currentData.links.github || currentData.links.url || currentData.links.download;
+                if (link) {
+                    window.open(link, '_blank');
+                }
+            }
+        });
     }
 
     scrollThumbnailIntoView(index) {
@@ -197,11 +244,14 @@ class ThumbnailScroller {
         let touchStartX = 0;
         let touchEndX = 0;
 
-        this.mainImage.parentElement.addEventListener('touchstart', (e) => {
+        const imageContainer = this.mainImage.closest('.discover-main-image-container');
+        if (!imageContainer) return;
+
+        imageContainer.addEventListener('touchstart', (e) => {
             touchStartX = e.changedTouches[0].screenX;
         }, { passive: true });
 
-        this.mainImage.parentElement.addEventListener('touchend', (e) => {
+        imageContainer.addEventListener('touchend', (e) => {
             touchEndX = e.changedTouches[0].screenX;
             this.handleSwipe(touchStartX, touchEndX);
         }, { passive: true });
