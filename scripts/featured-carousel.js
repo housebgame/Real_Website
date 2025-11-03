@@ -167,7 +167,7 @@ class FeaturedCarousel {
     }
 
     setupVideoDetection() {
-        // FINAL SOLUTION: Video shield that catches interaction and uses pointer-events to hide
+        // SOLUTION: Video shield that catches interaction and REMOVES itself
 
         this.items.forEach(item => {
             const shield = item.querySelector('.video-shield');
@@ -175,22 +175,22 @@ class FeaturedCarousel {
             if (shield) {
                 // On ANY interaction with shield (touch or click)
                 const handleShieldInteraction = (e) => {
-                    console.log('🎬 Video shield interaction - pausing carousel and disabling shield');
+                    console.log('🎬 Video shield tapped - pausing carousel and removing shield');
 
                     // 1. Pause carousel permanently
                     this.pauseAutoPlay();
                     this.isAutoPlaying = false;
 
-                    // 2. Make shield invisible to pointer events (lets clicks through to iframe)
-                    shield.style.pointerEvents = 'none';
+                    // 2. REMOVE the shield completely (not just hide it)
+                    shield.remove();
 
-                    // 3. For mobile: Need to ensure next touch reaches iframe
-                    // The user's current touch will complete here, they need to tap again
-                    console.log('🎬 Shield disabled - next tap will reach video');
+                    console.log('🎬 Shield removed - video is now interactive');
                 };
 
-                // Mobile: touchend works better than touchstart for this use case
-                shield.addEventListener('touchend', handleShieldInteraction, { passive: true });
+                // Mobile: touchstart (immediate response)
+                shield.addEventListener('touchstart', (e) => {
+                    handleShieldInteraction(e);
+                }, { passive: true });
 
                 // Desktop: click
                 shield.addEventListener('click', handleShieldInteraction);
