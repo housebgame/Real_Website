@@ -168,33 +168,66 @@ class FeaturedCarousel {
 
     setupVideoDetection() {
         // CLEVER SOLUTION: Use transparent overlay that catches first tap/click
-        // When tapped, it pauses carousel and removes itself to allow video interaction
+        // When tapped, it pauses carousel and removes itself IMMEDIATELY
 
         this.items.forEach(item => {
             const overlay = item.querySelector('.video-tap-overlay');
-            if (overlay) {
-                // Handle both touch (mobile) and click (desktop)
-                const handleInteraction = (e) => {
-                    console.log('🎬 Video overlay tapped/clicked - pausing carousel permanently');
+            const iframe = item.querySelector('iframe');
+
+            if (overlay && iframe) {
+                // Handle touch for mobile
+                overlay.addEventListener('touchstart', (e) => {
+                    console.log('🎬 Video overlay tapped - pausing carousel and removing overlay');
+
+                    // Pause the carousel FIRST
+                    this.pauseAutoPlay();
+                    this.isAutoPlaying = false;
+
+                    // Remove the overlay IMMEDIATELY (before touch completes)
+                    overlay.remove();
+
+                    // Get the touch coordinates
+                    const touch = e.touches[0];
+                    const rect = iframe.getBoundingClientRect();
+
+                    // Create a synthetic click on the iframe at the same location
+                    setTimeout(() => {
+                        const clickEvent = new MouseEvent('click', {
+                            bubbles: true,
+                            cancelable: true,
+                            clientX: touch.clientX,
+                            clientY: touch.clientY
+                        });
+                        iframe.dispatchEvent(clickEvent);
+                        console.log('🎬 Forwarded tap to video iframe');
+                    }, 10);
+                }, { passive: true });
+
+                // Handle click for desktop
+                overlay.addEventListener('click', (e) => {
+                    console.log('🎬 Video overlay clicked - pausing carousel and removing overlay');
 
                     // Pause the carousel
                     this.pauseAutoPlay();
                     this.isAutoPlaying = false;
 
-                    // Remove the overlay so user can interact with video
-                    overlay.style.display = 'none';
+                    // Remove the overlay
+                    overlay.remove();
 
-                    // Prevent event from bubbling
-                    e.stopPropagation();
-                };
+                    // Forward the click to iframe
+                    setTimeout(() => {
+                        const clickEvent = new MouseEvent('click', {
+                            bubbles: true,
+                            cancelable: true,
+                            clientX: e.clientX,
+                            clientY: e.clientY
+                        });
+                        iframe.dispatchEvent(clickEvent);
+                        console.log('🎬 Forwarded click to video iframe');
+                    }, 10);
+                });
 
-                // Touch for mobile
-                overlay.addEventListener('touchstart', handleInteraction, { passive: false });
-
-                // Click for desktop
-                overlay.addEventListener('click', handleInteraction);
-
-                // Also handle mouseenter for desktop hover
+                // Desktop hover - just pause, don't remove overlay yet
                 overlay.addEventListener('mouseenter', () => {
                     console.log('🎬 Video hovered - pausing carousel');
                     this.pauseAutoPlay();
