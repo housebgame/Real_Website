@@ -109,11 +109,37 @@
     height: 80px;
     border-radius: 10px;
     overflow: hidden;
-    cursor: none;
+    cursor: pointer;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     border: 2px solid transparent;
     position: relative;
     background: #FFFFFF;
+}
+
+/* Thumbnail Action Button */
+.thumbnail-action-btn {
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 6px 12px;
+    background: rgba(232, 93, 68, 0.95);
+    color: #FFFFFF;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+    white-space: nowrap;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.thumbnail-action-btn:hover {
+    background: rgba(232, 93, 68, 1);
+    transform: translateX(-50%) translateY(-2px);
+    box-shadow: 0 4px 12px rgba(232, 93, 68, 0.4);
 }
 
 .discover-thumbnail:hover {
@@ -374,6 +400,13 @@
         height: 35px;
     }
 
+    .thumbnail-action-btn {
+        bottom: 4px;
+        padding: 3px 6px;
+        font-size: 0.55rem;
+        border-radius: 4px;
+    }
+
     .discover-thumbnails {
         padding: 0 32px;
     }
@@ -408,6 +441,13 @@
     .discover-thumbnail {
         flex: 0 0 45px;
         height: 32px;
+    }
+
+    .thumbnail-action-btn {
+        bottom: 3px;
+        padding: 2px 5px;
+        font-size: 0.5rem;
+        border-radius: 3px;
     }
 
     .discover-thumbnails {

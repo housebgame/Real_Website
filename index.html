@@ -828,7 +828,21 @@
         projectsData.games.forEach((game, index) => {
             const thumb = document.createElement('div');
             thumb.className = `discover-thumbnail ${index === 0 ? 'active' : ''}`;
-            thumb.innerHTML = `<img src="${game.image}" alt="${game.title}">`;
+            thumb.innerHTML = `
+                <img src="${game.image}" alt="${game.title}">
+                <button class="thumbnail-action-btn">Play Now</button>
+            `;
+
+            // Make thumbnail clickable
+            thumb.style.cursor = 'pointer';
+            thumb.addEventListener('click', () => {
+                // Determine which link to use: playPage, crazyGame, or playStore
+                const link = game.links.playPage || game.links.crazyGame || game.links.playStore;
+                if (link) {
+                    window.location.href = link;
+                }
+            });
+
             gamesThumbnails.appendChild(thumb);
         });
     }
@@ -846,7 +860,21 @@
         projectsData.toolsAndAssets.forEach((item, index) => {
             const thumb = document.createElement('div');
             thumb.className = `discover-thumbnail ${index === 0 ? 'active' : ''}`;
-            thumb.innerHTML = `<img src="${item.image}" alt="${item.title}">`;
+            thumb.innerHTML = `
+                <img src="${item.image}" alt="${item.title}">
+                <button class="thumbnail-action-btn">View Details</button>
+            `;
+
+            // Make thumbnail clickable
+            thumb.style.cursor = 'pointer';
+            thumb.addEventListener('click', () => {
+                // Determine which link to use: github or other links, open in new tab
+                const link = item.links.github || item.links.url || item.links.download;
+                if (link) {
+                    window.open(link, '_blank');
+                }
+            });
+
             toolsAndAssetsThumbnails.appendChild(thumb);
         });
     }
@@ -990,7 +1018,7 @@ function populateSocialsSection() {
 
         // Debug version display
         const debugVersion = document.createElement('div');
-        debugVersion.textContent = 'Debug v14.1000';
+        debugVersion.textContent = 'Debug v15.2000';
         debugVersion.style.cssText = 'position: fixed; bottom: 10px; right: 10px; background: rgba(0,0,0,0.7); color: #fff; padding: 5px 10px; border-radius: 5px; font-size: 12px; z-index: 9999;';
         document.body.appendChild(debugVersion);
     </script>
