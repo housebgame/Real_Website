@@ -51,23 +51,24 @@ const projectsData = {
                 crazyGame: 'https://www.crazygames.com/game/simple-words',
                 playPage: 'pages/games/simple-words-pro.html'
             }
-        },
-        {
-            id: 'slidy',
-            title: 'Slidy',
-            category: 'game',
-            tag: 'Featured',
-            description: 'Pure, authentic, and relaxing color game. Slide blocks to match colors in this minimalist puzzle experience.',
-            image: 'images/slidy.png',
-            videoId: 'QUQNHY94gTo',
-            videoIdMobile: 'uJwDq7laUiY',
-            price: 0, // 0 = Free
-            links: {
-                crazyGame: 'https://www.crazygames.com/game/slidy',
-                android: 'https://play.google.com/store/apps/details?id=com.hbg.slidy',
-                playPage: 'pages/games/slidy.html'
-            }
         }
+        // ,
+        // {
+        //     id: 'slidy',
+        //     title: 'Slidy',
+        //     category: 'game',
+        //     tag: 'Featured',
+        //     description: 'Pure, authentic, and relaxing color game. Slide blocks to match colors in this minimalist puzzle experience.',
+        //     image: 'images/slidy.png',
+        //     videoId: 'QUQNHY94gTo',
+        //     videoIdMobile: 'uJwDq7laUiY',
+        //     price: 0, // 0 = Free
+        //     links: {
+        //         crazyGame: 'https://www.crazygames.com/game/slidy',
+        //         android: 'https://play.google.com/store/apps/details?id=com.hbg.slidy',
+        //         playPage: 'pages/games/slidy.html'
+        //     }
+        // }
     ],
 
     // Games Category

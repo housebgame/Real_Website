@@ -39,6 +39,8 @@
 /* Image Section */
 .discover-image-section {
     position: relative;
+    max-width: 100%;
+    overflow: hidden;
 }
 
 .discover-main-image-container {
@@ -46,6 +48,8 @@
     border-radius: 20px;
     overflow: hidden;
     aspect-ratio: 16 / 10;
+    max-width: 100%;
+    width: 100%;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15), 0 3px 10px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
     cursor: pointer;
