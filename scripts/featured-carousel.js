@@ -167,72 +167,38 @@ class FeaturedCarousel {
     }
 
     setupVideoDetection() {
-        // CLEVER SOLUTION: Use transparent overlay that catches first tap/click
-        // When tapped, it pauses carousel and removes itself IMMEDIATELY
+        // SIMPLE SOLUTION: Detect interaction on video container, pause once, mark as paused
+        // No overlay blocking - let natural events flow to iframe
 
         this.items.forEach(item => {
-            const overlay = item.querySelector('.video-tap-overlay');
-            const iframe = item.querySelector('iframe');
+            const videoContainer = item.querySelector('.video-container-with-pause');
 
-            if (overlay && iframe) {
-                // Handle touch for mobile
-                overlay.addEventListener('touchstart', (e) => {
-                    console.log('🎬 Video overlay tapped - pausing carousel and removing overlay');
+            if (videoContainer) {
+                let hasBeenPaused = false;
 
-                    // Pause the carousel FIRST
-                    this.pauseAutoPlay();
-                    this.isAutoPlaying = false;
+                // Universal handler that pauses carousel once
+                const pauseCarouselOnce = () => {
+                    if (!hasBeenPaused) {
+                        console.log('🎬 Video interaction detected - pausing carousel permanently');
+                        this.pauseAutoPlay();
+                        this.isAutoPlaying = false;
+                        hasBeenPaused = true;
+                    }
+                };
 
-                    // Remove the overlay IMMEDIATELY (before touch completes)
-                    overlay.remove();
-
-                    // Get the touch coordinates
-                    const touch = e.touches[0];
-                    const rect = iframe.getBoundingClientRect();
-
-                    // Create a synthetic click on the iframe at the same location
-                    setTimeout(() => {
-                        const clickEvent = new MouseEvent('click', {
-                            bubbles: true,
-                            cancelable: true,
-                            clientX: touch.clientX,
-                            clientY: touch.clientY
-                        });
-                        iframe.dispatchEvent(clickEvent);
-                        console.log('🎬 Forwarded tap to video iframe');
-                    }, 10);
-                }, { passive: true });
-
-                // Handle click for desktop
-                overlay.addEventListener('click', (e) => {
-                    console.log('🎬 Video overlay clicked - pausing carousel and removing overlay');
-
-                    // Pause the carousel
-                    this.pauseAutoPlay();
-                    this.isAutoPlaying = false;
-
-                    // Remove the overlay
-                    overlay.remove();
-
-                    // Forward the click to iframe
-                    setTimeout(() => {
-                        const clickEvent = new MouseEvent('click', {
-                            bubbles: true,
-                            cancelable: true,
-                            clientX: e.clientX,
-                            clientY: e.clientY
-                        });
-                        iframe.dispatchEvent(clickEvent);
-                        console.log('🎬 Forwarded click to video iframe');
-                    }, 10);
+                // Mobile: touchstart (fires before iframe captures it)
+                videoContainer.addEventListener('touchstart', pauseCarouselOnce, {
+                    passive: true,
+                    capture: true  // Capture phase - fires BEFORE iframe gets event
                 });
 
-                // Desktop hover - just pause, don't remove overlay yet
-                overlay.addEventListener('mouseenter', () => {
-                    console.log('🎬 Video hovered - pausing carousel');
-                    this.pauseAutoPlay();
-                    this.isAutoPlaying = false;
+                // Desktop: mousedown (fires before iframe captures it)
+                videoContainer.addEventListener('mousedown', pauseCarouselOnce, {
+                    capture: true  // Capture phase
                 });
+
+                // Desktop: hover as backup
+                videoContainer.addEventListener('mouseenter', pauseCarouselOnce);
             }
         });
     }
