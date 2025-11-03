@@ -6,18 +6,33 @@
 const projectsData = {
     // Featured Projects (shown in carousel)
     featured: [
+         {
+            id: 'zen-match',
+            title: 'Zen Match',
+            category: 'game',
+            tag: 'New Release',
+            description: 'A soothing tile-matching journey designed to calm your mind and delight your heart.🌸',
+            image: 'images/zen-match.jpg',
+            videoId: '7mnSlU_9KMc',
+            videoIdMobile: '7mnSlU_9KMc',
+            price: 1000, // 0 = Free
+            links: {
+                crazyGame: 'https://www.crazygames.com/game/zen-match-3',
+                // playPage: 'pages/games/zen-match.html'
+            }
+        },
         {
             id: 'letro',
             title: 'Letro',
             category: 'game',
-            tag: 'New Release',
+            tag: 'Featured',
             description: 'Crosswords made simple. A relaxing word puzzle game that challenges your vocabulary and problem-solving skills.',
             image: 'images/letro.png',
             videoId: 'QUQNHY94gTo',
             videoIdMobile: 'QUQNHY94gTo',
-            price: 0, // 0 = Free
+            price: 1000, // 0 = Free
             links: {
-                crazyGame: 'https://www.crazygames.com/game/letro',
+                crazyGame: 'https://lifeisjourney.itch.io/letro?secret=RFE8nNqvheIp8lMb5n0nXK4qGaA',
                 playPage: 'pages/games/letro.html'
             }
         },
@@ -58,6 +73,21 @@ const projectsData = {
     // Games Category
     games: [
         {
+            id: 'zen-match',
+            title: 'Zen Match',
+            subtitle: 'Match-3 Puzzle',
+            description: 'A soothing tile-matching journey designed to calm your mind and delight your heart.🌸',
+            image: 'images/zen-match.jpg',
+            bgColor: '#355cfcff',
+            videoId: '7mnSlU_9KMc',
+            videoIdMobile: '7mnSlU_9KMc',
+            price: 0, // 0 = Free
+            links: {
+                crazyGame: 'https://www.crazygames.com/game/zen-match-3',
+                // playPage: 'pages/games/zen-match.html'
+            }
+        },
+        {
             id: 'letro',
             title: 'Letro',
             subtitle: 'Word Puzzle',
@@ -68,8 +98,8 @@ const projectsData = {
             videoIdMobile: 'uJwDq7laUiY',
             price: 0, // 0 = Free
             links: {
-                crazyGame: 'https://www.crazygames.com/game/letro',
-                playPage: 'pages/games/letro.html'
+                crazyGame: 'https://lifeisjourney.itch.io/letro?secret=RFE8nNqvheIp8lMb5n0nXK4qGaA',
+                // playPage: 'pages/games/letro.html'
             }
         },
         {
@@ -178,13 +208,13 @@ const projectsData = {
             icon: '<svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>',
             url: 'https://www.youtube.com/@HouseBoatGame'
         },
-        {
-            platform: 'twitter',
-            title: 'Twitter / X',
-            description: 'Follow for updates and behind-the-scenes content',
-            icon: '<svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>',
-            url: 'https://x.com/Lakshay_mothwal'
-        },
+        // {
+        //     platform: 'twitter',
+        //     title: 'Twitter / X',
+        //     description: 'Follow for updates and behind-the-scenes content',
+        //     icon: '<svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>',
+        //     url: 'https://x.com/Lakshay_mothwal'
+        // },
         {
             platform: 'linkedin',
             title: 'LinkedIn',
