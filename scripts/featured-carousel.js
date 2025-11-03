@@ -167,7 +167,7 @@ class FeaturedCarousel {
     }
 
     setupVideoDetection() {
-        // Detect when user interacts with YouTube iframes
+        // Detect when user interacts with YouTube iframes (both desktop and mobile)
         this.container.addEventListener('click', (e) => {
             const iframe = e.target.closest('iframe');
             if (iframe && iframe.src.includes('youtube.com')) {
@@ -177,16 +177,36 @@ class FeaturedCarousel {
             }
         });
 
-        // Listen for iframe interaction (YouTube API would be more robust but adds dependency)
-        // Pause carousel when hovering over video
+        // Desktop: Pause on hover
+        this.container.addEventListener('mouseenter', (e) => {
+            const iframe = e.target.closest('iframe');
+            if (iframe && iframe.src.includes('youtube.com')) {
+                console.log('🎬 Video hovered - pausing carousel');
+                this.pauseAutoPlay();
+                this.isAutoPlaying = false;
+            }
+        }, true);
+
+        // Mobile: Pause on touch
+        this.container.addEventListener('touchstart', (e) => {
+            const iframe = e.target.closest('iframe');
+            if (iframe && iframe.src.includes('youtube.com')) {
+                console.log('🎬 Video touched - pausing carousel');
+                this.pauseAutoPlay();
+                this.isAutoPlaying = false;
+            }
+        }, { passive: true, capture: true });
+
+        // Detect when video area is in focus (works for both desktop and mobile)
         this.items.forEach(item => {
-            const iframe = item.querySelector('iframe');
-            if (iframe) {
-                iframe.addEventListener('mouseenter', () => {
-                    console.log('🎬 Video hovered - pausing carousel');
+            const videoContainer = item.querySelector('.featured-image-container');
+            if (videoContainer) {
+                // Add touch event for mobile
+                videoContainer.addEventListener('touchstart', () => {
+                    console.log('🎬 Video container touched - pausing carousel');
                     this.pauseAutoPlay();
                     this.isAutoPlaying = false;
-                });
+                }, { passive: true });
             }
         });
     }
