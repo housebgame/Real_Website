@@ -48,8 +48,33 @@
     aspect-ratio: 16 / 10;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15), 0 3px 10px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
-    cursor: none;
+    cursor: pointer;
     transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Main Image Action Button (Play Now / View Details) */
+.main-image-action-btn {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 16px 40px;
+    background: rgba(232, 93, 68, 0.95);
+    color: #FFFFFF;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.main-image-action-btn:hover {
+    background: rgba(232, 93, 68, 1);
+    transform: translateX(-50%) translateY(-4px);
+    box-shadow: 0 8px 30px rgba(232, 93, 68, 0.5);
 }
 
 .discover-main-image-container:hover {
@@ -109,37 +134,11 @@
     height: 80px;
     border-radius: 10px;
     overflow: hidden;
-    cursor: pointer;
+    cursor: none;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     border: 2px solid transparent;
     position: relative;
     background: #FFFFFF;
-}
-
-/* Thumbnail Action Button */
-.thumbnail-action-btn {
-    position: absolute;
-    bottom: 8px;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 6px 12px;
-    background: rgba(232, 93, 68, 0.95);
-    color: #FFFFFF;
-    border: none;
-    border-radius: 6px;
-    font-size: 0.7rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    z-index: 10;
-    white-space: nowrap;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-}
-
-.thumbnail-action-btn:hover {
-    background: rgba(232, 93, 68, 1);
-    transform: translateX(-50%) translateY(-2px);
-    box-shadow: 0 4px 12px rgba(232, 93, 68, 0.4);
 }
 
 .discover-thumbnail:hover {
@@ -395,16 +394,16 @@
         padding: 10px;
     }
 
+    .main-image-action-btn {
+        bottom: 20px;
+        padding: 12px 30px;
+        font-size: 0.95rem;
+        border-radius: 10px;
+    }
+
     .discover-thumbnail {
         flex: 0 0 50px;
         height: 35px;
-    }
-
-    .thumbnail-action-btn {
-        bottom: 4px;
-        padding: 3px 6px;
-        font-size: 0.55rem;
-        border-radius: 4px;
     }
 
     .discover-thumbnails {
@@ -438,16 +437,16 @@
         padding: 50px 15px;
     }
 
+    .main-image-action-btn {
+        bottom: 15px;
+        padding: 10px 24px;
+        font-size: 0.85rem;
+        border-radius: 8px;
+    }
+
     .discover-thumbnail {
         flex: 0 0 45px;
         height: 32px;
-    }
-
-    .thumbnail-action-btn {
-        bottom: 3px;
-        padding: 2px 5px;
-        font-size: 0.5rem;
-        border-radius: 3px;
     }
 
     .discover-thumbnails {

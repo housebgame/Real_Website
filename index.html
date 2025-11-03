@@ -817,64 +817,70 @@
       function populateDiscoverSection() {
     // Set main game image from first game in data
     const gamesMainImage = document.getElementById('gamesMainImage');
+    const gamesMainImageContainer = gamesMainImage?.closest('.discover-main-image-container');
+
     if (gamesMainImage && projectsData.games.length > 0) {
         gamesMainImage.src = projectsData.games[0].image;
         gamesMainImage.alt = projectsData.games[0].title;
+
+        // Add Play Now button to main image
+        const gamesButton = document.createElement('button');
+        gamesButton.className = 'main-image-action-btn';
+        gamesButton.textContent = 'Play Now';
+        gamesMainImageContainer.appendChild(gamesButton);
+
+        // Make main image container clickable
+        gamesMainImageContainer.style.cursor = 'pointer';
+        gamesMainImageContainer.addEventListener('click', () => {
+            const link = projectsData.games[0].links.playPage || projectsData.games[0].links.crazyGame || projectsData.games[0].links.playStore;
+            if (link) {
+                window.location.href = link;
+            }
+        });
     }
 
-    // Populate games thumbnails
+    // Populate games thumbnails (NO buttons on small thumbnails)
     const gamesThumbnails = document.getElementById('gamesThumbnails');
     if (gamesThumbnails) {
         projectsData.games.forEach((game, index) => {
             const thumb = document.createElement('div');
             thumb.className = `discover-thumbnail ${index === 0 ? 'active' : ''}`;
-            thumb.innerHTML = `
-                <img src="${game.image}" alt="${game.title}">
-                <button class="thumbnail-action-btn">Play Now</button>
-            `;
-
-            // Make thumbnail clickable
-            thumb.style.cursor = 'pointer';
-            thumb.addEventListener('click', () => {
-                // Determine which link to use: playPage, crazyGame, or playStore
-                const link = game.links.playPage || game.links.crazyGame || game.links.playStore;
-                if (link) {
-                    window.location.href = link;
-                }
-            });
-
+            thumb.innerHTML = `<img src="${game.image}" alt="${game.title}">`;
             gamesThumbnails.appendChild(thumb);
         });
     }
 
     // Set main tools & assets image from first item in data
     const toolsAndAssetsMainImage = document.getElementById('toolsAndAssetsMainImage');
+    const toolsMainImageContainer = toolsAndAssetsMainImage?.closest('.discover-main-image-container');
+
     if (toolsAndAssetsMainImage && projectsData.toolsAndAssets.length > 0) {
         toolsAndAssetsMainImage.src = projectsData.toolsAndAssets[0].image;
         toolsAndAssetsMainImage.alt = projectsData.toolsAndAssets[0].title;
+
+        // Add View Details button to main image
+        const toolsButton = document.createElement('button');
+        toolsButton.className = 'main-image-action-btn';
+        toolsButton.textContent = 'View Details';
+        toolsMainImageContainer.appendChild(toolsButton);
+
+        // Make main image container clickable (open in new tab)
+        toolsMainImageContainer.style.cursor = 'pointer';
+        toolsMainImageContainer.addEventListener('click', () => {
+            const link = projectsData.toolsAndAssets[0].links.github || projectsData.toolsAndAssets[0].links.url || projectsData.toolsAndAssets[0].links.download;
+            if (link) {
+                window.open(link, '_blank');
+            }
+        });
     }
 
-    // Populate tools & assets thumbnails
+    // Populate tools & assets thumbnails (NO buttons on small thumbnails)
     const toolsAndAssetsThumbnails = document.getElementById('toolsAndAssetsThumbnails');
     if (toolsAndAssetsThumbnails && projectsData.toolsAndAssets.length > 0) {
         projectsData.toolsAndAssets.forEach((item, index) => {
             const thumb = document.createElement('div');
             thumb.className = `discover-thumbnail ${index === 0 ? 'active' : ''}`;
-            thumb.innerHTML = `
-                <img src="${item.image}" alt="${item.title}">
-                <button class="thumbnail-action-btn">View Details</button>
-            `;
-
-            // Make thumbnail clickable
-            thumb.style.cursor = 'pointer';
-            thumb.addEventListener('click', () => {
-                // Determine which link to use: github or other links, open in new tab
-                const link = item.links.github || item.links.url || item.links.download;
-                if (link) {
-                    window.open(link, '_blank');
-                }
-            });
-
+            thumb.innerHTML = `<img src="${item.image}" alt="${item.title}">`;
             toolsAndAssetsThumbnails.appendChild(thumb);
         });
     }
@@ -1018,7 +1024,7 @@ function populateSocialsSection() {
 
         // Debug version display
         const debugVersion = document.createElement('div');
-        debugVersion.textContent = 'Debug v15.2000';
+        debugVersion.textContent = 'Debug v16.3000';
         debugVersion.style.cssText = 'position: fixed; bottom: 10px; right: 10px; background: rgba(0,0,0,0.7); color: #fff; padding: 5px 10px; border-radius: 5px; font-size: 12px; z-index: 9999;';
         document.body.appendChild(debugVersion);
     </script>
