@@ -14,7 +14,7 @@ const projectsData = {
             description: 'Crosswords made simple. A relaxing word puzzle game that challenges your vocabulary and problem-solving skills.',
             image: 'images/letro.png',
             videoId: 'QUQNHY94gTo',
-            videoIdMobile: 'uJwDq7laUiY',
+            videoIdMobile: 'QUQNHY94gTo',
             links: {
                 crazyGame: 'https://www.crazygames.com/game/letro',
                 playPage: 'pages/games/letro.html'
