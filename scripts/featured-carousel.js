@@ -167,38 +167,40 @@ class FeaturedCarousel {
     }
 
     setupVideoDetection() {
-        // SIMPLE SOLUTION: Detect interaction on video container, pause once, mark as paused
-        // No overlay blocking - let natural events flow to iframe
+        // FINAL SOLUTION: Video shield that catches interaction and uses pointer-events to hide
 
         this.items.forEach(item => {
-            const videoContainer = item.querySelector('.video-container-with-pause');
+            const shield = item.querySelector('.video-shield');
 
-            if (videoContainer) {
-                let hasBeenPaused = false;
+            if (shield) {
+                // On ANY interaction with shield (touch or click)
+                const handleShieldInteraction = (e) => {
+                    console.log('🎬 Video shield interaction - pausing carousel and disabling shield');
 
-                // Universal handler that pauses carousel once
-                const pauseCarouselOnce = () => {
-                    if (!hasBeenPaused) {
-                        console.log('🎬 Video interaction detected - pausing carousel permanently');
-                        this.pauseAutoPlay();
-                        this.isAutoPlaying = false;
-                        hasBeenPaused = true;
-                    }
+                    // 1. Pause carousel permanently
+                    this.pauseAutoPlay();
+                    this.isAutoPlaying = false;
+
+                    // 2. Make shield invisible to pointer events (lets clicks through to iframe)
+                    shield.style.pointerEvents = 'none';
+
+                    // 3. For mobile: Need to ensure next touch reaches iframe
+                    // The user's current touch will complete here, they need to tap again
+                    console.log('🎬 Shield disabled - next tap will reach video');
                 };
 
-                // Mobile: touchstart (fires before iframe captures it)
-                videoContainer.addEventListener('touchstart', pauseCarouselOnce, {
-                    passive: true,
-                    capture: true  // Capture phase - fires BEFORE iframe gets event
-                });
+                // Mobile: touchend works better than touchstart for this use case
+                shield.addEventListener('touchend', handleShieldInteraction, { passive: true });
 
-                // Desktop: mousedown (fires before iframe captures it)
-                videoContainer.addEventListener('mousedown', pauseCarouselOnce, {
-                    capture: true  // Capture phase
-                });
+                // Desktop: click
+                shield.addEventListener('click', handleShieldInteraction);
 
-                // Desktop: hover as backup
-                videoContainer.addEventListener('mouseenter', pauseCarouselOnce);
+                // Desktop: mouseenter to pause on hover
+                shield.addEventListener('mouseenter', () => {
+                    console.log('🎬 Video hovered - pausing carousel');
+                    this.pauseAutoPlay();
+                    this.isAutoPlaying = false;
+                });
             }
         });
     }
