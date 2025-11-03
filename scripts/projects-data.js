@@ -15,6 +15,7 @@ const projectsData = {
             image: 'images/letro.png',
             videoId: 'QUQNHY94gTo',
             videoIdMobile: 'QUQNHY94gTo',
+            price: 0, // 0 = Free
             links: {
                 crazyGame: 'https://www.crazygames.com/game/letro',
                 playPage: 'pages/games/letro.html'
@@ -29,6 +30,7 @@ const projectsData = {
             image: 'images/simple-words-pro.png',
             videoId: 'QUQNHY94gTo',
             videoIdMobile: 'uJwDq7laUiY',
+            price: 2.99,
             links: {
                 playStore: 'https://play.google.com/store/apps/details?id=com.HBG.SimpleWords.Paid',
                 crazyGame: 'https://www.crazygames.com/game/simple-words',
@@ -44,6 +46,7 @@ const projectsData = {
             image: 'images/slidy.png',
             videoId: 'QUQNHY94gTo',
             videoIdMobile: 'uJwDq7laUiY',
+            price: 0, // 0 = Free
             links: {
                 crazyGame: 'https://www.crazygames.com/game/slidy',
                 android: 'https://play.google.com/store/apps/details?id=com.hbg.slidy',
@@ -63,6 +66,7 @@ const projectsData = {
             bgColor: '#FF6B6B',
             videoId: 'QUQNHY94gTo',
             videoIdMobile: 'uJwDq7laUiY',
+            price: 0, // 0 = Free
             links: {
                 crazyGame: 'https://www.crazygames.com/game/letro',
                 playPage: 'pages/games/letro.html'
@@ -77,6 +81,7 @@ const projectsData = {
             bgColor: '#4D96FF',
             videoId: '9rH5eJCjhtg',
             videoIdMobile: 'uJwDq7laUiY',
+            price: 2.99,
             links: {
                 playStore: 'https://play.google.com/store/apps/details?id=com.HBG.SimpleWords.Paid',
                 crazyGame: 'https://www.crazygames.com/game/simple-words',
@@ -92,6 +97,7 @@ const projectsData = {
             bgColor: '#FFFFFF',
             videoId: 'QUQNHY94gTo',
             videoIdMobile: 'uJwDq7laUiY',
+            price: 0, // 0 = Free
             links: {
                 crazyGame: 'https://www.crazygames.com/game/slidy',
                 playPage: 'pages/games/slidy.html'
@@ -106,6 +112,7 @@ const projectsData = {
             bgColor: '#6BCB77',
             videoId: 'QUQNHY94gTo',
             videoIdMobile: 'uJwDq7laUiY',
+            price: 1.99,
             links: {
                 playStore: 'https://play.google.com/store/apps/details?id=com.BlockPuzzleGame.HexaQuest1',
                 playPage: 'pages/games/hexa-quest.html'
@@ -120,6 +127,7 @@ const projectsData = {
             bgColor: '#A06CD5',
             videoId: 'QUQNHY94gTo',
             videoIdMobile: 'uJwDq7laUiY',
+            price: 0, // 0 = Free
             links: {
                 playStore: 'https://play.google.com/store/apps/details?id=com.WordConnect.Crossword.Wonderer2',
                 playPage: 'pages/games/crossword-wonderer.html'
@@ -135,6 +143,7 @@ const projectsData = {
             subtitle: 'VS Code Extension',
             description: 'Manage and showcase projects from your editor.',
             image: 'images/letro.png', // Replace with actual tool/asset image
+            price: 0, // 0 = Free
             links: {
                 github: 'https://github.com/housebgame/portfolio-extension'
             }
@@ -145,6 +154,7 @@ const projectsData = {
             subtitle: 'UI Elements',
             description: 'Clean and modern UI elements for mobile games.',
             image: 'images/simple-words-pro.png', // Replace with actual tool/asset image
+            price: 9.99,
             links: {}
         },
         {
@@ -153,6 +163,7 @@ const projectsData = {
             subtitle: 'Editor Extension',
             description: 'Productivity tools for Unity game development.',
             image: 'images/slidy.png', // Replace with actual tool/asset image
+            price: 0, // 0 = Free
             links: {}
         }
         // Add more tools and assets here
