@@ -1,0 +1,464 @@
+/* ================================
+   CATALOG PAGE STYLES
+   Modern table and card layouts
+   ================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background: #FDF6E3;
+    color: #2C3E50;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Main Content */
+.catalog-main {
+    flex: 1;
+    padding: 120px 60px 60px;
+    max-width: 1600px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* Section Styling */
+.catalog-section {
+    margin-bottom: 100px;
+}
+
+.catalog-section:last-child {
+    margin-bottom: 0;
+}
+
+/* Section Header */
+.section-header {
+    margin-bottom: 40px;
+}
+
+.section-title-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.section-icon {
+    width: 40px;
+    height: 40px;
+    fill: #E85D44;
+}
+
+.section-title-wrapper h1 {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: #2C3E50;
+}
+
+.item-count {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #5D6D7E;
+    margin-left: 10px;
+}
+
+.section-description {
+    font-size: 1.1rem;
+    color: #5D6D7E;
+    line-height: 1.6;
+    max-width: 800px;
+}
+
+/* Desktop Table Layout */
+.catalog-table-wrapper {
+    overflow-x: auto;
+    background: #FFFFFF;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    padding: 20px;
+}
+
+.catalog-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.catalog-table thead {
+    background: #F9F2E7;
+}
+
+.catalog-table thead th {
+    padding: 20px 15px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #2C3E50;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 2px solid #E85D44;
+}
+
+.catalog-table tbody tr {
+    border-bottom: 1px solid #F0F0F0;
+    transition: all 0.3s ease;
+}
+
+.catalog-table tbody tr:hover {
+    background: #FDF6E3;
+    transform: scale(1.01);
+    box-shadow: 0 2px 10px rgba(232, 93, 68, 0.1);
+}
+
+.catalog-table tbody td {
+    padding: 20px 15px;
+    vertical-align: middle;
+}
+
+/* Table Columns */
+.name-col {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #2C3E50;
+    min-width: 200px;
+}
+
+.preview-col {
+    width: 120px;
+}
+
+.preview-col img {
+    width: 100px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.desc-col {
+    font-size: 0.95rem;
+    color: #5D6D7E;
+    line-height: 1.6;
+    max-width: 400px;
+}
+
+.action-col {
+    text-align: center;
+    width: 150px;
+}
+
+.action-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    background: #E85D44;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 12px rgba(232, 93, 68, 0.3);
+}
+
+.action-btn:hover {
+    background: #d44a31;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(232, 93, 68, 0.4);
+}
+
+.price-col {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #2C3E50;
+    text-align: center;
+    width: 100px;
+}
+
+.price-col.free {
+    color: #16D2AD;
+    font-size: 1.2rem;
+}
+
+/* Mobile Card Layout (Hidden on Desktop) */
+.catalog-cards {
+    display: none;
+}
+
+/* Footer */
+.catalog-footer {
+    background: #2C3E50;
+    color: #FFFFFF;
+    padding: 40px 60px;
+    text-align: center;
+}
+
+.catalog-footer p {
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.catalog-footer p:last-child {
+    margin-bottom: 0;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Responsive Design - Tablet */
+@media (max-width: 1024px) {
+    .catalog-main {
+        padding: 100px 40px 40px;
+    }
+
+    .catalog-table tbody td {
+        padding: 15px 10px;
+        font-size: 0.9rem;
+    }
+
+    .name-col {
+        font-size: 1rem;
+        min-width: 150px;
+    }
+
+    .preview-col img {
+        width: 80px;
+        height: 56px;
+    }
+
+    .desc-col {
+        font-size: 0.85rem;
+        max-width: 300px;
+    }
+
+    .action-btn {
+        padding: 10px 18px;
+        font-size: 0.85rem;
+    }
+
+    .price-col {
+        font-size: 1rem;
+    }
+
+    .price-col.free {
+        font-size: 1.1rem;
+    }
+}
+
+/* Responsive Design - Mobile */
+@media (max-width: 768px) {
+    .catalog-main {
+        padding: 100px 20px 30px;
+    }
+
+    .catalog-section {
+        margin-bottom: 60px;
+    }
+
+    .section-header {
+        margin-bottom: 25px;
+    }
+
+    .section-icon {
+        width: 32px;
+        height: 32px;
+    }
+
+    .section-title-wrapper {
+        flex-wrap: wrap;
+    }
+
+    .section-title-wrapper h1 {
+        font-size: 2rem;
+    }
+
+    .item-count {
+        font-size: 0.9rem;
+    }
+
+    .section-description {
+        font-size: 1rem;
+    }
+
+    /* Hide desktop table on mobile */
+    .catalog-table-wrapper {
+        display: none;
+    }
+
+    /* Show mobile cards */
+    .catalog-cards {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .catalog-card {
+        background: #FFFFFF;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+    }
+
+    .catalog-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .card-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+
+    .card-content {
+        padding: 20px;
+    }
+
+    .card-title {
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: #2C3E50;
+        margin-bottom: 10px;
+    }
+
+    .card-description {
+        font-size: 0.95rem;
+        color: #5D6D7E;
+        line-height: 1.6;
+        margin-bottom: 20px;
+    }
+
+    .card-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .card-btn {
+        flex: 1;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 20px;
+        background: #E85D44;
+        color: #FFFFFF;
+        border: none;
+        border-radius: 10px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 3px 12px rgba(232, 93, 68, 0.3);
+    }
+
+    .card-btn:hover {
+        background: #d44a31;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(232, 93, 68, 0.4);
+    }
+
+    .card-price {
+        font-weight: 600;
+        font-size: 1.2rem;
+        color: #2C3E50;
+        white-space: nowrap;
+    }
+
+    .card-price.free {
+        color: #16D2AD;
+        font-size: 1.3rem;
+    }
+
+    .catalog-footer {
+        padding: 30px 20px;
+    }
+
+    .catalog-footer p {
+        font-size: 0.9rem;
+    }
+}
+
+/* Responsive Design - Small Mobile */
+@media (max-width: 480px) {
+    .catalog-main {
+        padding: 90px 15px 20px;
+    }
+
+    .section-title-wrapper h1 {
+        font-size: 1.8rem;
+    }
+
+    .section-icon {
+        width: 28px;
+        height: 28px;
+    }
+
+    .card-image {
+        height: 180px;
+    }
+
+    .card-content {
+        padding: 15px;
+    }
+
+    .card-title {
+        font-size: 1.2rem;
+    }
+
+    .card-description {
+        font-size: 0.9rem;
+        margin-bottom: 15px;
+    }
+
+    .card-footer {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+    }
+
+    .card-btn {
+        width: 100%;
+        padding: 12px;
+    }
+
+    .card-price {
+        text-align: center;
+        font-size: 1.3rem;
+    }
+
+    .card-price.free {
+        font-size: 1.4rem;
+    }
+}
+
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Loading State */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.catalog-table tbody tr,
+.catalog-card {
+    animation: fadeIn 0.5s ease-out;
+}
