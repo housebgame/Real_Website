@@ -167,46 +167,39 @@ class FeaturedCarousel {
     }
 
     setupVideoDetection() {
-        // Detect when user interacts with YouTube iframes (both desktop and mobile)
-        this.container.addEventListener('click', (e) => {
-            const iframe = e.target.closest('iframe');
-            if (iframe && iframe.src.includes('youtube.com')) {
-                console.log('🎬 User clicked on video - pausing carousel');
-                this.pauseAutoPlay();
-                this.isAutoPlaying = false;
-            }
-        });
+        // CLEVER SOLUTION: Use transparent overlay that catches first tap/click
+        // When tapped, it pauses carousel and removes itself to allow video interaction
 
-        // Desktop: Pause on hover
-        this.container.addEventListener('mouseenter', (e) => {
-            const iframe = e.target.closest('iframe');
-            if (iframe && iframe.src.includes('youtube.com')) {
-                console.log('🎬 Video hovered - pausing carousel');
-                this.pauseAutoPlay();
-                this.isAutoPlaying = false;
-            }
-        }, true);
-
-        // Mobile: Pause on touch
-        this.container.addEventListener('touchstart', (e) => {
-            const iframe = e.target.closest('iframe');
-            if (iframe && iframe.src.includes('youtube.com')) {
-                console.log('🎬 Video touched - pausing carousel');
-                this.pauseAutoPlay();
-                this.isAutoPlaying = false;
-            }
-        }, { passive: true, capture: true });
-
-        // Detect when video area is in focus (works for both desktop and mobile)
         this.items.forEach(item => {
-            const videoContainer = item.querySelector('.featured-image-container');
-            if (videoContainer) {
-                // Add touch event for mobile
-                videoContainer.addEventListener('touchstart', () => {
-                    console.log('🎬 Video container touched - pausing carousel');
+            const overlay = item.querySelector('.video-tap-overlay');
+            if (overlay) {
+                // Handle both touch (mobile) and click (desktop)
+                const handleInteraction = (e) => {
+                    console.log('🎬 Video overlay tapped/clicked - pausing carousel permanently');
+
+                    // Pause the carousel
                     this.pauseAutoPlay();
                     this.isAutoPlaying = false;
-                }, { passive: true });
+
+                    // Remove the overlay so user can interact with video
+                    overlay.style.display = 'none';
+
+                    // Prevent event from bubbling
+                    e.stopPropagation();
+                };
+
+                // Touch for mobile
+                overlay.addEventListener('touchstart', handleInteraction, { passive: false });
+
+                // Click for desktop
+                overlay.addEventListener('click', handleInteraction);
+
+                // Also handle mouseenter for desktop hover
+                overlay.addEventListener('mouseenter', () => {
+                    console.log('🎬 Video hovered - pausing carousel');
+                    this.pauseAutoPlay();
+                    this.isAutoPlaying = false;
+                });
             }
         });
     }
