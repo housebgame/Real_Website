@@ -28,8 +28,8 @@ const projectsData = {
             tag: 'Featured',
             description: 'Crosswords made simple. A relaxing word puzzle game that challenges your vocabulary and problem-solving skills.',
             image: 'images/letro.png',
-            videoId: 'QUQNHY94gTo',
-            videoIdMobile: 'QUQNHY94gTo',
+            videoId: 'xsQubrsZsJo',
+            videoIdMobile: 'xsQubrsZsJo',
             price: 1000, // 0 = Free
             links: {
                 crazyGame: 'https://lifeisjourney.itch.io/letro?secret=RFE8nNqvheIp8lMb5n0nXK4qGaA',
@@ -43,8 +43,8 @@ const projectsData = {
             tag: 'Popular',
             description: 'Relaxing word game that\'s as beautiful as it is brainy. Connect letters to form words and clear the board.',
             image: 'images/simple-words-pro.png',
-            videoId: 'QUQNHY94gTo',
-            videoIdMobile: 'uJwDq7laUiY',
+            videoId: 'xARulXMqWF4',
+            videoIdMobile: 'xARulXMqWF4',
             price: 2.99,
             links: {
                 playStore: 'https://play.google.com/store/apps/details?id=com.HBG.SimpleWords.Paid',
@@ -110,13 +110,13 @@ const projectsData = {
             description: 'Relaxing word game that\'s beautiful and brainy.',
             image: 'images/simple-words-pro.png',
             bgColor: '#4D96FF',
-            videoId: '9rH5eJCjhtg',
-            videoIdMobile: 'uJwDq7laUiY',
-            price: 2.99,
+            videoId: 'xARulXMqWF4',
+            videoIdMobile: 'xARulXMqWF4',
+            price: 8000,
             links: {
                 playStore: 'https://play.google.com/store/apps/details?id=com.HBG.SimpleWords.Paid',
                 crazyGame: 'https://www.crazygames.com/game/simple-words',
-                playPage: 'pages/games/simple-words-pro.html'
+                //playPage: 'pages/games/simple-words-pro.html'
             }
         },
         {
