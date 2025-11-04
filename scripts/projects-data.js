@@ -156,8 +156,8 @@ const projectsData = {
             description: 'Ultimate crossword puzzle game.',
             image: 'images/crossword-wonderer.png',
             bgColor: '#A06CD5',
-            videoId: 'QUQNHY94gTo',
-            videoIdMobile: 'uJwDq7laUiY',
+            videoId: 'DCq7nspOekQ',
+            videoIdMobile: 'DCq7nspOekQ',
             price: 0, // 0 = Free
             links: {
                 playStore: 'https://play.google.com/store/apps/details?id=com.WordConnect.Crossword.Wonderer2',
