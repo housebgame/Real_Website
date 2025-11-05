@@ -146,7 +146,7 @@ const projectsData = {
             price: 1.99,
             links: {
                 playStore: 'https://play.google.com/store/apps/details?id=com.BlockPuzzleGame.HexaQuest1',
-                playPage: 'pages/games/hexa-quest.html'
+                // playPage: 'pages/games/hexa-quest.html'
             }
         },
         {
@@ -161,7 +161,7 @@ const projectsData = {
             price: 0, // 0 = Free
             links: {
                 playStore: 'https://play.google.com/store/apps/details?id=com.WordConnect.Crossword.Wonderer2',
-                playPage: 'pages/games/crossword-wonderer.html'
+                // playPage: 'pages/games/crossword-wonderer.html'
             }
         }
     ],
@@ -169,34 +169,35 @@ const projectsData = {
     // Tools & Assets Category (merged)
     toolsAndAssets: [
         {
-            id: 'portfolio-extension',
-            title: 'Portfolio Extension',
-            subtitle: 'VS Code Extension',
-            description: 'Manage and showcase projects from your editor.',
-            image: 'images/letro.png', // Replace with actual tool/asset image
+            id: 'sprite-editor',
+            title: 'Sprite Editor',
+            subtitle: 'Web Extension',
+            description: 'Smart sprite sheet slicer for developers.',
+            image: 'images/sprite-editor.png', // Replace with actual tool/asset image
             price: 0, // 0 = Free
             links: {
-                github: 'https://github.com/housebgame/portfolio-extension'
+                github: 'https://sprite-editor.netlify.app/'
             }
-        },
-        {
-            id: 'ui-pack-1',
-            title: 'Modern UI Pack',
-            subtitle: 'UI Elements',
-            description: 'Clean and modern UI elements for mobile games.',
-            image: 'images/simple-words-pro.png', // Replace with actual tool/asset image
-            price: 9.99,
-            links: {}
-        },
-        {
-            id: 'unity-helper',
-            title: 'Unity Helper Tools',
-            subtitle: 'Editor Extension',
-            description: 'Productivity tools for Unity game development.',
-            image: 'images/slidy.png', // Replace with actual tool/asset image
-            price: 0, // 0 = Free
-            links: {}
         }
+        // ,
+        // {
+        //     id: 'ui-pack-1',
+        //     title: 'Modern UI Pack',
+        //     subtitle: 'UI Elements',
+        //     description: 'Clean and modern UI elements for mobile games.',
+        //     image: 'images/simple-words-pro.png', // Replace with actual tool/asset image
+        //     price: 9.99,
+        //     links: {}
+        // },
+        // {
+        //     id: 'unity-helper',
+        //     title: 'Unity Helper Tools',
+        //     subtitle: 'Editor Extension',
+        //     description: 'Productivity tools for Unity game development.',
+        //     image: 'images/slidy.png', // Replace with actual tool/asset image
+        //     price: 0, // 0 = Free
+        //     links: {}
+        // }
         // Add more tools and assets here
     ],
 
