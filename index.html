@@ -590,7 +590,7 @@
                     © 2025 House Boat Game. All rights reserved.
                 </div>
                 <div class="footer-credits">
-                    <span>Built with passion <span class="version-tag">v2.1</span></span>
+                    <span>Built with passion <span class="heart-version" id="heartVersion" data-current="0">❤️</span></span>
                     <!-- <a href="https://github.com/housebgame" target="_blank">View on GitHub</a> -->
                 </div>
             </div>
@@ -925,6 +925,27 @@ function populateSocialsSection() {
             }
         }
 
+        // ============= HEART VERSION SYSTEM =============
+        // Three heart variations to indicate page version/updates
+        // Randomly changes on each update, never repeats consecutively
+        function setRandomHeartVersion() {
+            const hearts = ['❤️', '💙', '💚'];
+            const heartElement = document.getElementById('heartVersion');
+
+            if (!heartElement) return;
+
+            const currentHeart = heartElement.getAttribute('data-current') || '0';
+            let newIndex;
+
+            // Get a random heart that's different from current
+            do {
+                newIndex = Math.floor(Math.random() * hearts.length);
+            } while (newIndex.toString() === currentHeart && hearts.length > 1);
+
+            heartElement.textContent = hearts[newIndex];
+            heartElement.setAttribute('data-current', newIndex.toString());
+        }
+
         // ============= INITIALIZE ON LOAD =============
         window.addEventListener('load', () => {
             setTimeout(() => {
@@ -936,6 +957,7 @@ function populateSocialsSection() {
             populateDiscoverSection();
             populateSocialsSection();
             populateFooter();
+            setRandomHeartVersion();
 
             // Initialize carousels AFTER content is populated
             setTimeout(() => {
