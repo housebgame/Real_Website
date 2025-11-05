@@ -130,8 +130,8 @@ const projectsData = {
             videoIdMobile: 'uJwDq7laUiY',
             price: 0, // 0 = Free
             links: {
-                crazyGame: 'https://www.crazygames.com/game/slidy',
-                playPage: 'pages/games/slidy.html'
+                crazyGame: 'https://lifeisjourney.itch.io/slidy?secret=QigGnwfnvMiwlmuVaQYxRriz24',
+                //playPage: 'pages/games/slidy.html'
             }
         },
         {
